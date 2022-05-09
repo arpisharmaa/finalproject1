@@ -89,6 +89,7 @@ elif page == "Fast Food Restaurants by State":
 
     # main function that runs the code without returning a value
     def main():
+        st.subheader("Select a State to see the top 10 fast food restaurants in that state")
         df = pd.read_csv('Fast_Food_Restaurants_8000_sample (1).csv')
         states_list = stateslist(df)
         x = st.sidebar.selectbox('Select U.S. State for pi chart', states_list)
