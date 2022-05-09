@@ -2,7 +2,7 @@
 Name: Arpi Sharma
 CS230 Section 5
 Data: Fast Food Restaurants Across America
-URL:
+URL: https://share.streamlit.io/arpisharmaa/finalproject1/main/finalproject.py
 """
 import collections
 import csv
@@ -100,7 +100,21 @@ elif page == "Map":
     mapstate = st.sidebar.selectbox('Select U.S. State for Map', stateslist(pd.read_csv('Fast_Food_Restaurants_8000_sample (1).csv')))
     map(mapstate)
 elif page == "Bar Chart":
-    st.subheader("The most popular fast food chain in America is McDonalds, but in this graph I will be comparing 5 different states from different regions and the popularity of McDonalds there.")
+    def horizontalbarchart():
+        data = {'AR':13, 'CT':8, 'IL':63, 'NM':18, 'TX':112}
+        states = list(data.keys())
+        values = list(data.values())
+        fig = plt.figure(figsize=(10,5))
+        plt.barh(states, values)
+        plt.xlabel("Number of McDonalds")
+        plt.ylabel("States")
+        plt.title("McDonalds Around the Country")
+        st.pyplot(fig)
+    def main():
+        horizontalbarchart()
+        st.subheader("The most popular fast food chain in America is McDonalds, but in this graph I will be comparing 5 different states from different regions and the popularity of McDonalds there.")
+    main()
+
 
 elif page == "Amount of Fast Food Restaurants in each State":
     def barchart():
@@ -115,5 +129,6 @@ elif page == "Amount of Fast Food Restaurants in each State":
         st.pyplot(fig)
     def main():
         barchart()
+        st.subheader("This chart is representative of the amount of fast food restaurants found in different areas of the US.")
     main()
 
