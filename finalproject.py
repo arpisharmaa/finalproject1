@@ -4,8 +4,6 @@ CS230 Section 5
 Data: Fast Food Restaurants Across America
 URL: https://share.streamlit.io/arpisharmaa/finalproject1/main/finalproject.py
 """
-import collections
-import csv
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -22,10 +20,6 @@ def stateslist(dataframe):
         if y not in final:
             final.append(y)
     return sorted(final)
-
-
-
-
 
 def map(state):
     x = pd.read_csv('Fast_Food_Restaurants_8000_sample (1).csv')
@@ -129,7 +123,11 @@ elif page == "Amount of Fast Food Restaurants in each State":
         plt.title("Number of Fast Food Restaurants in Each State")
         st.pyplot(fig)
     def main():
-        barchart()
-        st.subheader("This chart is representative of the amount of fast food restaurants found in different areas of the US.")
+        choice = st.radio("Would you like to see a representation of fast food restaurants in different territories?", ("Yes", "No"))
+        if choice == "Yes":
+            barchart()
+            st.subheader("This chart is representative of the amount of fast food restaurants found in different areas of the US.")
+        else:
+            st.warning("Nothing is displayed because you chose to not view the data")
     main()
 
